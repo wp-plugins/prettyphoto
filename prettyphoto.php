@@ -19,7 +19,7 @@ add_filter('wp_footer', 'pp_print_footer_script');
 
 function pp_enqueue_required_scripts() {
     $pp_path = plugin_dir_url(__FILE__);
-    wp_enquueue_style('pp_css', $pp_path.'css/prettyPhoto.css');
+    wp_enqueue_style('pp_css', $pp_path.'css/prettyPhoto.css');
     wp_enqueue_script('pp_js', $pp_path.'js/jquery.prettyPhoto.js', array('jquery'));
 }
 

@@ -1,27 +1,30 @@
 <?php
 /*
 Plugin Name: PrettyPhoto
-Plugin URI: http://en.ibabar.com
+Plugin URI: http://www.ibabar.com/blog/prettyphoto
 Description: The WordPress port of the jQuery library named PrettyPhoto.
-Version: 1.0
+Version: 1.1
 Author: Babar
 Author URI: http://www.iBabar.com
-Requires at least: 3.0
-Tested Up to: 3.5.1
-Stable Tag: 1.0
+Requires at least: 3.1
+Tested Up to: 3.8
+Stable Tag: 1.1
 License: GPL v2
 */
 
-add_action ('wp_footer', 'prettyphoto');
+$shortname = 'pp';
 
-function prettyphoto() {
+add_filter('wp_enqueue_scripts', 'pp_enqueue_required_scripts');
+add_filter('wp_footer', 'pp_print_footer_script');
 
-	
-echo '<link rel="stylesheet" href="' . plugin_dir_url("prettyphoto.php") .'prettyphoto/css/prettyPhoto.css" type="text/css" media="screen" charset="utf-8" />
-	';
-echo '<script src="' . plugin_dir_url("prettyphoto.php") .'prettyphoto/js/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
-	';
-echo "
+function pp_enqueue_required_scripts() {
+    $pp_path = plugin_dir_url(__FILE__);
+    wp_enquueue_style('pp_css', $pp_path.'css/prettyPhoto.css');
+    wp_enqueue_script('pp_js', $pp_path.'js/jquery.prettyPhoto.js', array('jquery'));
+}
+
+function pp_print_footer_script() {
+    $script = <<<END
 <script type=\"text/javascript\" charset=\"utf-8\">
     jQuery(document).ready(function() {
     jQuery(\"a[rel^='prettyPhoto']\").prettyPhoto({
@@ -29,5 +32,6 @@ echo "
 	    });
     });
 </script>
-";
+END;
+echo $script;
 	}

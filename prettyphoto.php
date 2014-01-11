@@ -25,9 +25,9 @@ function pp_enqueue_required_scripts() {
 
 function pp_print_footer_script() {
     $script = <<<END
-<script type=\"text/javascript\" charset=\"utf-8\">
+<script type="text/javascript" charset="utf-8">
     jQuery(document).ready(function() {
-    jQuery(\"a[rel^='prettyPhoto']\").prettyPhoto({
+    jQuery("a[rel^='prettyPhoto']").prettyPhoto({
 	    deeplinking: false,
 	    });
     });

@@ -7,8 +7,8 @@ Version: 1.1
 Author: Babar
 Author URI: http://www.iBabar.com
 Requires at least: 3.1
-Tested Up to: 3.8
-Stable Tag: 1.1
+Tested Up to: 4.2
+Stable Tag: 1.2
 License: GPL v2
 */
 
